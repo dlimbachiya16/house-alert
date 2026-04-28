@@ -1,18 +1,8 @@
-"""
-scraper.py
-Fetches listings from Redfin's undocumented CSV download endpoint.
-Returns a list of dicts, one per listing.
-"""
-
 import csv
 import io
 import time
 import logging
 import requests
-from config import (
-    CITIES, STATE, MIN_BEDS, MIN_BATHS,
-    MAX_PRICE, MIN_PRICE, PROPERTY_TYPES,
-)
 
 logger = logging.getLogger(__name__)
 
@@ -26,145 +16,152 @@ HEADERS = {
     "Referer": "https://www.redfin.com/",
 }
 
-# ── Step 1: resolve city → Redfin region_id ──────────────────────────────────
+# Correct region IDs pulled directly from Redfin URLs
+CITY_REGION_IDS = {
+    "Hoffman Estates":   "29487",
+    "Schaumburg":        "29511",
+    "Bartlett":          "29462",
+    "Carol Stream":      "2933",
+    "Hanover Park":      "29485",
+    "Elk Grove Village": "29478",
+    "Streamwood":        "18644",
+    "Roselle":           "29508",
+}
 
-REGION_SEARCH_URL = "https://www.redfin.com/stingray/do/location-autocomplete"
+URL_COL = "URL (SEE https://www.redfin.com/buy-a-home/comparative-market-analysis FOR INFO ON PRICING)"
 
-def get_region_id(city: str, state: str) -> str | None:
-    """Query Redfin autocomplete to get the region_id for a city."""
-    params = {
-        "location": f"{city}, {state}",
-        "start": 0,
-        "count": 5,
-        "v": 2,
-        "market": "chicago",
-        "al": 1,
-        "iss": "false",
-        "ooa": "true",
-    }
-    try:
-        r = requests.get(REGION_SEARCH_URL, params=params, headers=HEADERS, timeout=15)
-        r.raise_for_status()
-        # Redfin wraps JSON in "{}&&" prefix — strip it
-        text = r.text
-        if text.startswith("{}&&"):
-            text = text[4:]
-        import json
-        data = json.loads(text)
-        items = data.get("payload", {}).get("sections", [])
-        for section in items:
-            for row in section.get("rows", []):
-                if row.get("type") == "2":  # type 2 = city
-                    return row["id"].split("_")[1]  # e.g. "city_29401" → "29401"
-    except Exception as e:
-        logger.warning(f"Could not resolve region_id for {city}: {e}")
-    return None
+from config import MIN_BEDS, MIN_BATHS, MAX_PRICE, MIN_PRICE
 
 
-# ── Step 2: download CSV for a region ────────────────────────────────────────
-
-CSV_DOWNLOAD_URL = "https://www.redfin.com/stingray/api/gis-csv"
-
-def fetch_city_listings(city: str) -> list[dict]:
-    """Fetch all matching listings for one city as a list of dicts."""
-    region_id = get_region_id(city, STATE)
-    if not region_id:
-        logger.warning(f"Skipping {city} — could not get region_id")
-        return []
-
+def fetch_csv(region_id):
+    url = "https://www.redfin.com/stingray/api/gis-csv"
     params = {
         "al": 1,
         "market": "chicago",
-        "min_beds": MIN_BEDS,
-        "min_baths": MIN_BATHS,
-        "max_price": MAX_PRICE,
-        "min_price": MIN_PRICE,
-        "property_type": PROPERTY_TYPES,
-        "region_id": region_id,
-        "region_type": 6,          # 6 = city
-        "status": 9,               # 9 = active + contingent + pending
-        "uipt": PROPERTY_TYPES,
-        "v": 8,
         "num_homes": 350,
+        "region_id": region_id,
+        "region_type": 6,
+        "status": 9,
+        "uipt": "1,3",
+        "v": 8,
     }
+    r = requests.get(url, params=params, headers=HEADERS, timeout=20)
+    r.raise_for_status()
+    return r.text
 
-    try:
-        r = requests.get(CSV_DOWNLOAD_URL, params=params, headers=HEADERS, timeout=20)
-        r.raise_for_status()
-        content = r.text
 
-        # Redfin sometimes returns an error page if bot-detected
-        if "<html" in content[:200].lower():
-            logger.warning(f"Got HTML instead of CSV for {city} — possibly blocked")
-            return []
-
-        listings = []
-        reader = csv.DictReader(io.StringIO(content))
-        for row in reader:
-            parsed = parse_row(row, city)
-            if parsed:
-                listings.append(parsed)
-        logger.info(f"  {city}: {len(listings)} listings fetched")
-        return listings
-
-    except Exception as e:
-        logger.error(f"Error fetching {city}: {e}")
+def parse_csv(csv_text):
+    lines = csv_text.strip().splitlines()
+    # Find real header line (skip disclaimer row)
+    header_idx = None
+    for i, line in enumerate(lines):
+        if "ADDRESS" in line and "BEDS" in line:
+            header_idx = i
+            break
+    if header_idx is None:
         return []
+    real_csv = "\n".join(lines[header_idx:])
+    reader = csv.DictReader(io.StringIO(real_csv))
+    return list(reader)
 
 
-# ── Step 3: parse a CSV row into a clean dict ─────────────────────────────────
-
-def parse_row(row: dict, city: str) -> dict | None:
-    """Normalize a Redfin CSV row. Returns None if row is unusable."""
+def passes_filter(row):
+    """Client-side filter since Redfin ignores server-side params."""
     try:
-        mls_id = row.get("MLS#", "").strip()
+        # Skip disclaimer/blank rows
+        if not row.get("ADDRESS") and not row.get("MLS#"):
+            return False
+        # Skip rows where SALE TYPE is the disclaimer text
+        if "accordance" in (row.get("SALE TYPE") or "").lower():
+            return False
+
+        price = int(float((row.get("PRICE") or "0").replace("$", "").replace(",", "") or 0))
+        beds  = float(row.get("BEDS") or 0)
+        baths = float(row.get("BATHS") or 0)
+        state = (row.get("STATE OR PROVINCE") or "").strip().upper()
+
+        return (
+            state == "IL"
+            and beds >= MIN_BEDS
+            and baths >= MIN_BATHS
+            and MIN_PRICE <= price <= MAX_PRICE
+        )
+    except Exception:
+        return False
+
+
+def parse_row(row, city):
+    try:
+        price_raw = (row.get("PRICE") or "0").replace("$", "").replace(",", "").strip()
+        price = int(float(price_raw)) if price_raw else 0
+
+        beds  = float(row.get("BEDS")  or 0)
+        baths = float(row.get("BATHS") or 0)
+
+        sqft_raw = (row.get("SQUARE FEET") or "0").replace(",", "").strip()
+        sqft = int(float(sqft_raw)) if sqft_raw else 0
+
+        address  = row.get("ADDRESS", "").strip()
+        city_val = row.get("CITY", city).strip()
+        state    = row.get("STATE OR PROVINCE", "IL").strip()
+        zip_code = row.get("ZIP OR POSTAL CODE", "").strip()
+        status   = row.get("STATUS", "").strip()
+        mls_id   = row.get("MLS#", "").strip()
+        url      = row.get(URL_COL, "").strip()
+
         if not mls_id:
             return None
 
-        price_raw = row.get("PRICE", "0").replace("$", "").replace(",", "").strip()
-        price = int(float(price_raw)) if price_raw else 0
-
-        beds_raw = row.get("BEDS", "0").strip()
-        beds = float(beds_raw) if beds_raw else 0
-
-        baths_raw = row.get("BATHS", "0").strip()
-        baths = float(baths_raw) if baths_raw else 0
-
-        sqft_raw = row.get("SQUARE FEET", "0").replace(",", "").strip()
-        sqft = int(float(sqft_raw)) if sqft_raw else 0
-
-        status = row.get("STATUS", "").strip()
-        address = row.get("ADDRESS", "").strip()
-        zip_code = row.get("ZIP OR POSTAL CODE", "").strip()
-        url = row.get("URL (SEE http://www.redfin.com/buy-a-home/comparative-market-analysis FOR INFO ON PRICING)", "").strip()
-        if url and not url.startswith("http"):
-            url = "https://www.redfin.com" + url
-
         return {
-            "id": mls_id,
-            "address": f"{address}, {city}, {STATE} {zip_code}".strip(", "),
-            "price": price,
-            "beds": beds,
-            "baths": baths,
-            "sqft": sqft,
-            "status": status,
-            "url": url,
-            "city": city,
+            "id":      mls_id,
+            "address": f"{address}, {city_val}, {state} {zip_code}".strip(", "),
+            "price":   price,
+            "beds":    beds,
+            "baths":   baths,
+            "sqft":    sqft,
+            "status":  status,
+            "url":     url,
+            "city":    city_val,
         }
     except Exception as e:
-        logger.debug(f"Row parse error: {e} | row={row}")
+        logger.debug(f"Row parse error: {e}")
         return None
 
 
-# ── Public entry point ────────────────────────────────────────────────────────
+def fetch_city_listings(city):
+    region_id = CITY_REGION_IDS.get(city)
+    if not region_id:
+        logger.warning(f"No region ID for {city}")
+        return []
 
-def fetch_all_listings() -> list[dict]:
-    """Fetch listings for ALL configured cities. Returns combined list."""
+    try:
+        csv_text = fetch_csv(region_id)
+    except Exception as e:
+        logger.error(f"Failed to fetch {city}: {e}")
+        return []
+
+    if "<html" in csv_text[:300].lower():
+        logger.warning(f"Got HTML for {city} — blocked")
+        return []
+
+    rows = parse_csv(csv_text)
+    listings = []
+    for row in rows:
+        if passes_filter(row):
+            parsed = parse_row(row, city)
+            if parsed:
+                listings.append(parsed)
+
+    logger.info(f"  {city}: {len(listings)} listings after filter")
+    return listings
+
+
+def fetch_all_listings():
     all_listings = []
-    for city in CITIES:
+    for city in CITY_REGION_IDS:
         logger.info(f"Fetching: {city}")
         listings = fetch_city_listings(city)
         all_listings.extend(listings)
-        time.sleep(2)  # be polite — avoid hammering Redfin
-    logger.info(f"Total listings fetched: {len(all_listings)}")
+        time.sleep(2)
+    logger.info(f"Total listings: {len(all_listings)}")
     return all_listings
