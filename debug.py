@@ -1,9 +1,3 @@
-"""
-debug.py - v3
-Fixes: blank first row, client-side filtering, prints ALL column names so we know exact headers.
-Also tests region_type=2 vs region_type=6 to see which returns more results.
-"""
-
 import csv
 import io
 import requests
@@ -19,41 +13,57 @@ HEADERS = {
 }
 
 CITIES = {
-    "Hoffman Estates":  "29873",
-    "Schaumburg":       "30313",
-    "Bartlett":         "29132",
-    "Carol Stream":     "29342",
-    "Hanover Park":     "29827",
-    "Elk Grove Village":"29598",
-    "Streamwood":       "30526",
+    "Hoffman Estates":   "29873",
+    "Schaumburg":        "30313",
+    "Bartlett":          "29132",
+    "Carol Stream":      "29342",
+    "Hanover Park":      "29827",
+    "Elk Grove Village": "29598",
+    "Streamwood":        "30526",
 }
 
-def fetch_csv(region_id, region_type=6):
+print("Script started", flush=True)
+
+for city, region_id in CITIES.items():
+    print(f"\n{'='*50}", flush=True)
+    print(f"CITY: {city} | region_id: {region_id}", flush=True)
+
     url = "https://www.redfin.com/stingray/api/gis-csv"
     params = {
         "al": 1,
         "market": "chicago",
         "num_homes": 350,
-        "ord": "redfin-recommended-asc",
-        "page_number": 1,
         "region_id": region_id,
-        "region_type": region_type,
+        "region_type": 6,
         "status": 9,
         "uipt": "1,3",
         "v": 8,
     }
-    r = requests.get(url, params=params, headers=HEADERS, timeout=20)
-    return r.text
 
-def parse_csv(csv_text):
-    """Redfin CSVs have a blank/disclaimer first row — skip lines until we hit the real header."""
-    lines = csv_text.strip().splitlines()
-    # Find the line that contains 'ADDRESS' — that's the real header
+    r = requests.get(url, params=params, headers=HEADERS, timeout=20)
+    print(f"  HTTP {r.status_code} | size: {len(r.text)} chars", flush=True)
+    print(f"  First 500 chars:\n{r.text[:500]}", flush=True)
+
+    # Find real header line
+    lines = r.text.strip().splitlines()
     header_idx = None
     for i, line in enumerate(lines):
         if "ADDRESS" in line and "BEDS" in line:
             header_idx = i
             break
+
     if header_idx is None:
-        return [], []
-    real_csv = "\n".joi
+        print("  Could not find header row", flush=True)
+        continue
+
+    print(f"  Header found at line index: {header_idx}", flush=True)
+    real_csv = "\n".join(lines[header_idx:])
+    reader = csv.DictReader(io.StringIO(real_csv))
+    rows = list(reader)
+    print(f"  Total rows: {len(rows)}", flush=True)
+    if rows:
+        print(f"  Column names: {list(rows[0].keys())}", flush=True)
+    for i, row in enumerate(rows[:3]):
+        print(f"  Row {i+1}: {dict(row)}", flush=True)
+
+print("\nScript finished", flush=True)
