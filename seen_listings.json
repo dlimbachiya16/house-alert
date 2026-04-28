@@ -3,5 +3,55 @@
     "status": "Pre On-Market",
     "price": 410000,
     "address": "770 Voyager Dr, Bartlett, IL 60103"
+  },
+  "214174089": {
+    "status": "Active",
+    "price": 414900,
+    "address": "575 Jamison Ln, Hoffman Estates, IL 60169"
+  },
+  "214200138": {
+    "status": "Active",
+    "price": 435000,
+    "address": "670 Lakeview Ln, Hoffman Estates, IL 60169"
+  },
+  "213786187": {
+    "status": "Active",
+    "price": 422900,
+    "address": "900 Georgean Ln, Schaumburg, IL 60193"
+  },
+  "212517463": {
+    "status": "Coming Soon",
+    "price": 410000,
+    "address": "770 Voyager Dr, Bartlett, IL 60103"
+  },
+  "212538397": {
+    "status": "Active",
+    "price": 394900,
+    "address": "23W464 Olive Ct, Carol Stream, IL 60188"
+  },
+  "214455084": {
+    "status": "Active",
+    "price": 439999,
+    "address": "1690 Wildwood Ln, Hanover Park, IL 60133"
+  },
+  "214434851": {
+    "status": "Active",
+    "price": 369999,
+    "address": "6881 Hickory St, Hanover Park, IL 60133"
+  },
+  "214258815": {
+    "status": "Active",
+    "price": 399900,
+    "address": "1217 Citation Ln, Hanover Park, IL 60133"
+  },
+  "214422884": {
+    "status": "Active",
+    "price": 359500,
+    "address": "8045 Northway Dr, Hanover Park, IL 60133"
+  },
+  "214308641": {
+    "status": "Active",
+    "price": 391000,
+    "address": "7815 Carlisle Dr, Hanover Park, IL 60133"
   }
 }
