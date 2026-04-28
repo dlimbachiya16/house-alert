@@ -1,5 +1,4 @@
-import csv
-import io
+import json
 import time
 import logging
 import requests
@@ -16,7 +15,6 @@ HEADERS = {
     "Referer": "https://www.redfin.com/",
 }
 
-# Correct region IDs pulled directly from Redfin URLs
 CITY_REGION_IDS = {
     "Hoffman Estates":   "29487",
     "Schaumburg":        "29511",
@@ -28,93 +26,72 @@ CITY_REGION_IDS = {
     "Roselle":           "29508",
 }
 
-URL_COL = "URL (SEE https://www.redfin.com/buy-a-home/comparative-market-analysis FOR INFO ON PRICING)"
-
-from config import MIN_BEDS, MIN_BATHS, MAX_PRICE, MIN_PRICE
+from config import MIN_BEDS, MIN_BATHS, MAX_PRICE, MIN_PRICE, STATE
 
 
-def fetch_csv(region_id):
-    url = "https://www.redfin.com/stingray/api/gis-csv"
+def fetch_gis(region_id):
+    url = "https://www.redfin.com/stingray/api/gis"
     params = {
         "al": 1,
         "market": "chicago",
+        "min_beds": MIN_BEDS,
+        "min_baths": MIN_BATHS,
+        "max_price": MAX_PRICE,
+        "min_price": MIN_PRICE,
         "num_homes": 350,
+        "page_number": 1,
         "region_id": region_id,
         "region_type": 6,
         "status": 9,
-        "uipt": "1,3",
+        "uipt": "1",        # single family only
         "v": 8,
+        "sf": "1,2,3,5,6,7",
     }
     r = requests.get(url, params=params, headers=HEADERS, timeout=20)
     r.raise_for_status()
-    return r.text
+    text = r.text
+    if text.startswith("{}&&"):
+        text = text[4:]
+    return json.loads(text)
 
 
-def parse_csv(csv_text):
-    lines = csv_text.strip().splitlines()
-    # Find real header line (skip disclaimer row)
-    header_idx = None
-    for i, line in enumerate(lines):
-        if "ADDRESS" in line and "BEDS" in line:
-            header_idx = i
-            break
-    if header_idx is None:
-        return []
-    real_csv = "\n".join(lines[header_idx:])
-    reader = csv.DictReader(io.StringIO(real_csv))
-    return list(reader)
-
-
-def passes_filter(row):
-    """Client-side filter since Redfin ignores server-side params."""
+def parse_home(home, city):
     try:
-        # Skip disclaimer/blank rows
-        if not row.get("ADDRESS") and not row.get("MLS#"):
-            return False
-        # Skip rows where SALE TYPE is the disclaimer text
-        if "accordance" in (row.get("SALE TYPE") or "").lower():
-            return False
+        # Skip non-single-family
+        if home.get("uiPropertyType") != 1:
+            return None
 
-        price = int(float((row.get("PRICE") or "0").replace("$", "").replace(",", "") or 0))
-        beds  = float(row.get("BEDS") or 0)
-        baths = float(row.get("BATHS") or 0)
-        state = (row.get("STATE OR PROVINCE") or "").strip().upper()
+        # Skip wrong state
+        if home.get("state", "").upper() != STATE:
+            return None
 
-        return (
-            state == "IL"
-            and beds >= MIN_BEDS
-            and baths >= MIN_BATHS
-            and MIN_PRICE <= price <= MAX_PRICE
-        )
-    except Exception:
-        return False
+        price = (home.get("price") or {}).get("value", 0) or 0
+        beds  = home.get("beds", 0) or 0
+        baths = home.get("baths", 0) or 0
+        sqft  = (home.get("sqFt") or {}).get("value", 0) or 0
 
+        # Client-side filter (server filters don't always apply)
+        if price > MAX_PRICE or price < MIN_PRICE:
+            return None
+        if beds < MIN_BEDS or baths < MIN_BATHS:
+            return None
 
-def parse_row(row, city):
-    try:
-        price_raw = (row.get("PRICE") or "0").replace("$", "").replace(",", "").strip()
-        price = int(float(price_raw)) if price_raw else 0
+        street   = (home.get("streetLine") or {}).get("value", "").strip()
+        city_val = home.get("city", city).strip()
+        state    = home.get("state", STATE).strip()
+        zip_code = home.get("zip", "").strip()
+        status   = home.get("mlsStatus", "").strip()
+        mls_id   = (home.get("mlsId") or {}).get("value", "").strip()
+        url_path = home.get("url", "")
+        url      = f"https://www.redfin.com{url_path}" if url_path else ""
+        listing_id = str(home.get("listingId") or home.get("propertyId") or mls_id)
 
-        beds  = float(row.get("BEDS")  or 0)
-        baths = float(row.get("BATHS") or 0)
-
-        sqft_raw = (row.get("SQUARE FEET") or "0").replace(",", "").strip()
-        sqft = int(float(sqft_raw)) if sqft_raw else 0
-
-        address  = row.get("ADDRESS", "").strip()
-        city_val = row.get("CITY", city).strip()
-        state    = row.get("STATE OR PROVINCE", "IL").strip()
-        zip_code = row.get("ZIP OR POSTAL CODE", "").strip()
-        status   = row.get("STATUS", "").strip()
-        mls_id   = row.get("MLS#", "").strip()
-        url      = row.get(URL_COL, "").strip()
-
-        if not mls_id:
+        if not listing_id:
             return None
 
         return {
-            "id":      mls_id,
-            "address": f"{address}, {city_val}, {state} {zip_code}".strip(", "),
+            "id":      listing_id,
+            "address": f"{street}, {city_val}, {state} {zip_code}".strip(", "),
             "price":   price,
             "beds":    beds,
             "baths":   baths,
@@ -124,7 +101,7 @@ def parse_row(row, city):
             "city":    city_val,
         }
     except Exception as e:
-        logger.debug(f"Row parse error: {e}")
+        logger.debug(f"Parse error: {e}")
         return None
 
 
@@ -135,22 +112,17 @@ def fetch_city_listings(city):
         return []
 
     try:
-        csv_text = fetch_csv(region_id)
+        data = fetch_gis(region_id)
     except Exception as e:
         logger.error(f"Failed to fetch {city}: {e}")
         return []
 
-    if "<html" in csv_text[:300].lower():
-        logger.warning(f"Got HTML for {city} — blocked")
-        return []
-
-    rows = parse_csv(csv_text)
+    homes = data.get("payload", {}).get("homes", [])
     listings = []
-    for row in rows:
-        if passes_filter(row):
-            parsed = parse_row(row, city)
-            if parsed:
-                listings.append(parsed)
+    for home in homes:
+        parsed = parse_home(home, city)
+        if parsed:
+            listings.append(parsed)
 
     logger.info(f"  {city}: {len(listings)} listings after filter")
     return listings
