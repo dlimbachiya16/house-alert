@@ -9,12 +9,14 @@ CITIES = [
     "Roselle",
 ]
 
-MIN_BEDS = 4
+MIN_BEDS  = 4
 MIN_BATHS = 2
 MAX_PRICE = 451_000
 MIN_PRICE = 0
 
-PROPERTY_TYPES = "1,3"
+# 1 = single family only
+PROPERTY_TYPES = "1"
+
 STATE = "IL"
 
 SEEN_FILE = "seen_listings.json"
