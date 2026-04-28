@@ -1,5 +1,4 @@
-import csv
-import io
+import json
 import requests
 
 HEADERS = {
@@ -33,60 +32,68 @@ for city, region_id in CITY_REGION_IDS.items():
     print(f"\n{'='*50}", flush=True)
     print(f"CITY: {city} | region_id: {region_id}", flush=True)
 
-    url = "https://www.redfin.com/stingray/api/gis-csv"
+    url = "https://www.redfin.com/stingray/api/gis"
     params = {
         "al": 1,
         "market": "chicago",
+        "min_beds": MIN_BEDS,
+        "min_baths": MIN_BATHS,
+        "max_price": MAX_PRICE,
         "num_homes": 350,
+        "ord": "redfin-recommended-asc",
+        "page_number": 1,
         "region_id": region_id,
         "region_type": 6,
         "status": 9,
         "uipt": "1,3",
         "v": 8,
+        "sf": "1,2,3,5,6,7",  # include coming soon, active, pending
     }
 
     r = requests.get(url, params=params, headers=HEADERS, timeout=20)
+    print(f"  HTTP {r.status_code} | size: {len(r.text)} chars", flush=True)
 
-    lines = r.text.strip().splitlines()
-    header_idx = None
-    for i, line in enumerate(lines):
-        if "ADDRESS" in line and "BEDS" in line:
-            header_idx = i
-            break
+    text = r.text
+    if text.startswith("{}&&"):
+        text = text[4:]
 
-    if header_idx is None:
-        print("  No header row found", flush=True)
+    if "<html" in text[:200].lower():
+        print("  BLOCKED — got HTML", flush=True)
         continue
 
-    real_csv = "\n".join(lines[header_idx:])
-    reader = csv.DictReader(io.StringIO(real_csv))
-    rows = list(reader)
-    print(f"  Total rows: {len(rows)}", flush=True)
+    try:
+        data = json.loads(text)
+    except Exception as e:
+        print(f"  JSON parse error: {e}", flush=True)
+        print(f"  Raw: {r.text[:300]}", flush=True)
+        continue
 
-    for i, row in enumerate(rows):
-        # Skip the MLS disclaimer row
-        if "accordance" in (row.get("SALE TYPE") or "").lower():
-            continue
+    homes = data.get("payload", {}).get("homes", [])
+    print(f"  Homes returned: {len(homes)}", flush=True)
 
-        state = (row.get("STATE OR PROVINCE") or "").strip().upper()
-        price_raw = (row.get("PRICE") or "0").replace("$","").replace(",","").strip()
-        price = int(float(price_raw)) if price_raw else 0
-        beds_raw  = row.get("BEDS") or "0"
-        baths_raw = row.get("BATHS") or "0"
-        beds  = float(beds_raw) if beds_raw else 0
-        baths = float(baths_raw) if baths_raw else 0
+    for i, home in enumerate(homes[:5]):
+        info = home.get("homeData", {})
+        address_info = info.get("addressInfo", {})
+        price_info   = info.get("priceInfo", {})
+        beds  = info.get("beds", "?")
+        baths = info.get("baths", "?")
+        sqft  = info.get("sqFt", {}).get("value", "?")
+        price = price_info.get("amount", "?")
+        status = info.get("statusInfo", {}).get("displayStatus", "?")
+        street = address_info.get("formattedStreetLine", "?")
+        city_name = address_info.get("city", "?")
+        state = address_info.get("state", "?")
+        zipcode = address_info.get("zip", "?")
+        listing_id = info.get("listingId", "?")
+        url_path = info.get("url", "")
 
-        # Show why it fails filter
-        reasons = []
-        if state != "IL":        reasons.append(f"state={state}")
-        if beds < MIN_BEDS:      reasons.append(f"beds={beds}")
-        if baths < MIN_BATHS:    reasons.append(f"baths={baths}")
-        if price > MAX_PRICE:    reasons.append(f"price=${price:,}")
-        if price == 0:           reasons.append("price=0/missing")
-
-        status = "PASS" if not reasons else f"FAIL ({', '.join(reasons)})"
-
-        print(f"  Row {i+1}: {row.get('ADDRESS')}, {row.get('CITY')}, {state} | "
-              f"${price:,} | {beds}bd {baths}ba | {row.get('STATUS')} | {status}", flush=True)
+        print(f"\n  Listing {i+1}:", flush=True)
+        print(f"    ADDRESS: {street}, {city_name}, {state} {zipcode}", flush=True)
+        print(f"    PRICE:   ${price:,}" if isinstance(price, int) else f"    PRICE:   {price}", flush=True)
+        print(f"    BEDS:    {beds}", flush=True)
+        print(f"    BATHS:   {baths}", flush=True)
+        print(f"    SQFT:    {sqft}", flush=True)
+        print(f"    STATUS:  {status}", flush=True)
+        print(f"    URL:     https://www.redfin.com{url_path}", flush=True)
 
 print("\nScript finished", flush=True)
