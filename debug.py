@@ -23,8 +23,6 @@ CITY_REGION_IDS = {
     "Roselle":           "29508",
 }
 
-URL_COL = "URL (SEE https://www.redfin.com/buy-a-home/comparative-market-analysis FOR INFO ON PRICING)"
-
 MIN_BEDS  = 4
 MIN_BATHS = 2
 MAX_PRICE = 451000
@@ -48,11 +46,6 @@ for city, region_id in CITY_REGION_IDS.items():
     }
 
     r = requests.get(url, params=params, headers=HEADERS, timeout=20)
-    print(f"  HTTP {r.status_code} | size: {len(r.text)} chars", flush=True)
-
-    if "<html" in r.text[:300].lower():
-        print("  BLOCKED — got HTML", flush=True)
-        continue
 
     lines = r.text.strip().splitlines()
     header_idx = None
@@ -70,34 +63,30 @@ for city, region_id in CITY_REGION_IDS.items():
     rows = list(reader)
     print(f"  Total rows: {len(rows)}", flush=True)
 
-    # Client-side filter
-    filtered = []
-    for row in rows:
-        try:
-            if "accordance" in (row.get("SALE TYPE") or "").lower():
-                continue
-            if not row.get("ADDRESS") and not row.get("MLS#"):
-                continue
-            state = (row.get("STATE OR PROVINCE") or "").strip().upper()
-            price = int(float((row.get("PRICE") or "0").replace("$","").replace(",","") or 0))
-            beds  = float(row.get("BEDS") or 0)
-            baths = float(row.get("BATHS") or 0)
-            if state == "IL" and beds >= MIN_BEDS and baths >= MIN_BATHS and price <= MAX_PRICE:
-                filtered.append(row)
-        except Exception as e:
-            print(f"  Filter error: {e}", flush=True)
+    for i, row in enumerate(rows):
+        # Skip the MLS disclaimer row
+        if "accordance" in (row.get("SALE TYPE") or "").lower():
+            continue
 
-    print(f"  IL listings matching filters: {len(filtered)}", flush=True)
+        state = (row.get("STATE OR PROVINCE") or "").strip().upper()
+        price_raw = (row.get("PRICE") or "0").replace("$","").replace(",","").strip()
+        price = int(float(price_raw)) if price_raw else 0
+        beds_raw  = row.get("BEDS") or "0"
+        baths_raw = row.get("BATHS") or "0"
+        beds  = float(beds_raw) if beds_raw else 0
+        baths = float(baths_raw) if baths_raw else 0
 
-    for i, row in enumerate(filtered):
-        print(f"\n  Listing {i+1}:", flush=True)
-        print(f"    ADDRESS: {row.get('ADDRESS')}, {row.get('CITY')}, {row.get('STATE OR PROVINCE')} {row.get('ZIP OR POSTAL CODE')}", flush=True)
-        print(f"    PRICE:   {row.get('PRICE')}", flush=True)
-        print(f"    BEDS:    {row.get('BEDS')}", flush=True)
-        print(f"    BATHS:   {row.get('BATHS')}", flush=True)
-        print(f"    SQFT:    {row.get('SQUARE FEET')}", flush=True)
-        print(f"    STATUS:  {row.get('STATUS')}", flush=True)
-        print(f"    MLS#:    {row.get('MLS#')}", flush=True)
-        print(f"    URL:     {row.get(URL_COL, '')[:80]}", flush=True)
+        # Show why it fails filter
+        reasons = []
+        if state != "IL":        reasons.append(f"state={state}")
+        if beds < MIN_BEDS:      reasons.append(f"beds={beds}")
+        if baths < MIN_BATHS:    reasons.append(f"baths={baths}")
+        if price > MAX_PRICE:    reasons.append(f"price=${price:,}")
+        if price == 0:           reasons.append("price=0/missing")
+
+        status = "PASS" if not reasons else f"FAIL ({', '.join(reasons)})"
+
+        print(f"  Row {i+1}: {row.get('ADDRESS')}, {row.get('CITY')}, {state} | "
+              f"${price:,} | {beds}bd {baths}ba | {row.get('STATUS')} | {status}", flush=True)
 
 print("\nScript finished", flush=True)
