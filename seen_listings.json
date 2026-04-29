@@ -58,5 +58,10 @@
     "status": "Active",
     "price": 425000,
     "address": "244 Arapahoe Trl, Carol Stream, IL 60188"
+  },
+  "214203007": {
+    "status": "Active",
+    "price": 449900,
+    "address": "1990 Wildwood Ln, Hanover Park, IL 60133"
   }
 }
