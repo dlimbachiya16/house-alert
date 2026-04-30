@@ -68,5 +68,10 @@
     "status": "Active",
     "price": 375000,
     "address": "2N131 Willard St, Carol Stream, IL 60188"
+  },
+  "214558958": {
+    "status": "Active",
+    "price": 449900,
+    "address": "439 E Morse Ave, Bartlett, IL 60103"
   }
 }
