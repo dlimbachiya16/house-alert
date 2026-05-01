@@ -83,5 +83,10 @@
     "status": "Active",
     "price": 399900,
     "address": "3990 Hudson Dr, Hoffman Estates, IL 60192"
+  },
+  "214652987": {
+    "status": "Active",
+    "price": 430000,
+    "address": "2N629 Jefferson St, West Chicago, IL 60185"
   }
 }
