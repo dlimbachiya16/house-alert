@@ -88,5 +88,10 @@
     "status": "Active",
     "price": 430000,
     "address": "2N629 Jefferson St, West Chicago, IL 60185"
+  },
+  "205795310": {
+    "status": "Active",
+    "price": 430000,
+    "address": "1024 Confederation Dr, Bartlett, IL 60103"
   }
 }
