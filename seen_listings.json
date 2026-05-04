@@ -93,5 +93,10 @@
     "status": "Active",
     "price": 430000,
     "address": "1024 Confederation Dr, Bartlett, IL 60103"
+  },
+  "214710681": {
+    "status": "Coming Soon",
+    "price": 450000,
+    "address": "854 Plains Ct, Carol Stream, IL 60188"
   }
 }
