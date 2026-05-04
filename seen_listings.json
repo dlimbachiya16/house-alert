@@ -98,5 +98,10 @@
     "status": "Coming Soon",
     "price": 450000,
     "address": "854 Plains Ct, Carol Stream, IL 60188"
+  },
+  "214276897": {
+    "status": "Active",
+    "price": 350000,
+    "address": "604 Newberry Dr, Streamwood, IL 60107"
   }
 }
