@@ -113,5 +113,10 @@
     "status": "Active",
     "price": 399000,
     "address": "1057 Cedar Ln, Elk Grove Village, IL 60007"
+  },
+  "214846838": {
+    "status": "Active",
+    "price": 449000,
+    "address": "745 Quincy Dr, Roselle, IL 60172"
   }
 }
