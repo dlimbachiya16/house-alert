@@ -118,5 +118,15 @@
     "status": "Active",
     "price": 449000,
     "address": "745 Quincy Dr, Roselle, IL 60172"
+  },
+  "214875064": {
+    "status": "Active",
+    "price": 385000,
+    "address": "7410 East Ave, Hanover Park, IL 60133"
+  },
+  "214379099": {
+    "status": "Active",
+    "price": 419900,
+    "address": "7855 Kensington Ln, Hanover Park, IL 60133"
   }
 }
