@@ -133,5 +133,10 @@
     "status": "Active",
     "price": 399900,
     "address": "671 Coral Ave, Bartlett, IL 60103"
+  },
+  "214904835": {
+    "status": "Coming Soon",
+    "price": 415000,
+    "address": "1931 Hollywood Ave, Hanover Park, IL 60133"
   }
 }
