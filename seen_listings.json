@@ -128,5 +128,10 @@
     "status": "Active",
     "price": 419900,
     "address": "7855 Kensington Ln, Hanover Park, IL 60133"
+  },
+  "214880619": {
+    "status": "Active",
+    "price": 399900,
+    "address": "671 Coral Ave, Bartlett, IL 60103"
   }
 }
