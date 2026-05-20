@@ -168,5 +168,15 @@
     "status": "Active",
     "price": 439900,
     "address": "965 S Chippendale Dr, Bartlett, IL 60103"
+  },
+  "215555563": {
+    "status": "Active",
+    "price": 445900,
+    "address": "793 Santa Fe Ct, Carol Stream, IL 60188"
+  },
+  "215548809": {
+    "status": "Active",
+    "price": 379900,
+    "address": "7450 Astor Ave, Hanover Park, IL 60133"
   }
 }
