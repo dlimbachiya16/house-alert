@@ -188,5 +188,10 @@
     "status": "Active",
     "price": 379900,
     "address": "7040 Meadowbrook Ln, Hanover Park, IL 60133"
+  },
+  "215866229": {
+    "status": "Active",
+    "price": 360000,
+    "address": "130 Canton Ln, Streamwood, IL 60107"
   }
 }
