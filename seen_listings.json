@@ -193,5 +193,10 @@
     "status": "Active",
     "price": 360000,
     "address": "130 Canton Ln, Streamwood, IL 60107"
+  },
+  "214710863": {
+    "status": "Active",
+    "price": 450000,
+    "address": "854 Plains Ct, Carol Stream, IL 60188"
   }
 }
