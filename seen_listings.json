@@ -218,5 +218,15 @@
     "status": "Active",
     "price": 399900,
     "address": "10 Ash Ct, Streamwood, IL 60107"
+  },
+  "216112189": {
+    "status": "Active",
+    "price": 390000,
+    "address": "1193 Morning Glory Ln, Bartlett, IL 60103"
+  },
+  "216070286": {
+    "status": "Active",
+    "price": 450000,
+    "address": "511 Walnut Ln, Elk Grove Village, IL 60007"
   }
 }
