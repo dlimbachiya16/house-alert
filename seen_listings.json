@@ -258,5 +258,10 @@
     "status": "Active",
     "price": 350000,
     "address": "966 Oceanside Ter, Bartlett, IL 60103"
+  },
+  "216329909": {
+    "status": "Coming Soon",
+    "price": 349990,
+    "address": "121 Seton Pl, Streamwood, IL 60107"
   }
 }
