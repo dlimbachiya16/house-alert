@@ -288,5 +288,15 @@
     "status": "Active",
     "price": 349990,
     "address": "121 Seton Pl, Streamwood, IL 60107"
+  },
+  "216537671": {
+    "status": "Active",
+    "price": 389900,
+    "address": "1150 Glen Ln, Hoffman Estates, IL 60169"
+  },
+  "216543152": {
+    "status": "Active",
+    "price": 449900,
+    "address": "9 Redwood Ct, Streamwood, IL 60107"
   }
 }
