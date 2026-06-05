@@ -283,5 +283,10 @@
     "status": "Active",
     "price": 450000,
     "address": "18 Ascot Ln, Streamwood, IL 60107"
+  },
+  "216328570": {
+    "status": "Active",
+    "price": 349990,
+    "address": "121 Seton Pl, Streamwood, IL 60107"
   }
 }
