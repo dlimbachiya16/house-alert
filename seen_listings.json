@@ -181,7 +181,7 @@
   },
   "214445690": {
     "status": "Active",
-    "price": 435000,
+    "price": 425000,
     "address": "1837 Grosse Pointe Cir, Hanover Park, IL 60133"
   },
   "215466080": {
@@ -323,5 +323,10 @@
     "status": "Coming Soon",
     "price": 389000,
     "address": "533 Bahama Ln, Schaumburg, IL 60193"
+  },
+  "215234869": {
+    "status": "Active",
+    "price": 450000,
+    "address": "106 Wildflower Way, Streamwood, IL 60107"
   }
 }
