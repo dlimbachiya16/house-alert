@@ -318,5 +318,10 @@
     "status": "Active",
     "price": 445000,
     "address": "2088 Pennsbury Ln, Hanover Park, IL 60133"
+  },
+  "216463951": {
+    "status": "Coming Soon",
+    "price": 389000,
+    "address": "533 Bahama Ln, Schaumburg, IL 60193"
   }
 }
