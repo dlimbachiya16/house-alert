@@ -308,5 +308,10 @@
     "status": "Active",
     "price": 437000,
     "address": "532 Rose Ln, Bartlett, IL 60103"
+  },
+  "216738770": {
+    "status": "Active",
+    "price": 425000,
+    "address": "765 Balboa Ter, Bartlett, IL 60103"
   }
 }
