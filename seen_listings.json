@@ -343,5 +343,10 @@
     "status": "Active",
     "price": 445900,
     "address": "793 Santa Fe Ct, Carol Stream, IL 60188"
+  },
+  "216910677": {
+    "status": "Active",
+    "price": 419900,
+    "address": "712 Spring St, Roselle, IL 60172"
   }
 }
