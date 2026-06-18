@@ -358,5 +358,15 @@
     "status": "Active",
     "price": 435000,
     "address": "18 Ascot Ln, Streamwood, IL 60107"
+  },
+  "217002236": {
+    "status": "Active",
+    "price": 400000,
+    "address": "616 Clover Ln, Schaumburg, IL 60193"
+  },
+  "216576985": {
+    "status": "Active",
+    "price": 447400,
+    "address": "750 Michigan Ln, Elk Grove Village, IL 60007"
   }
 }
