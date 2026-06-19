@@ -368,5 +368,10 @@
     "status": "Active",
     "price": 447400,
     "address": "750 Michigan Ln, Elk Grove Village, IL 60007"
+  },
+  "217017878": {
+    "status": "Active",
+    "price": 429900,
+    "address": "102 Hill St, Roselle, IL 60172"
   }
 }
