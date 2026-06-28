@@ -393,5 +393,10 @@
     "status": "Active",
     "price": 450000,
     "address": "715 Newport N, Roselle, IL 60172"
+  },
+  "217307334": {
+    "status": "Active",
+    "price": 399895,
+    "address": "983 Valleyview Dr, Bartlett, IL 60103"
   }
 }
