@@ -403,5 +403,10 @@
     "status": "Active",
     "price": 450000,
     "address": "91 Kendal Rd, Elk Grove Village, IL 60007"
+  },
+  "217422370": {
+    "status": "Active",
+    "price": 350000,
+    "address": "23W563 Woodworth Pl, Roselle, IL 60172"
   }
 }
