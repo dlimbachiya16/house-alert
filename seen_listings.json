@@ -398,5 +398,10 @@
     "status": "Active",
     "price": 399895,
     "address": "983 Valleyview Dr, Bartlett, IL 60103"
+  },
+  "217192650": {
+    "status": "Active",
+    "price": 450000,
+    "address": "91 Kendal Rd, Elk Grove Village, IL 60007"
   }
 }
