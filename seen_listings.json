@@ -408,5 +408,10 @@
     "status": "Active",
     "price": 350000,
     "address": "23W563 Woodworth Pl, Roselle, IL 60172"
+  },
+  "218308187": {
+    "status": "Active",
+    "price": 439000,
+    "address": "Hoffman Estates, IL 60169"
   }
 }
