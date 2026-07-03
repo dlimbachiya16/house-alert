@@ -413,5 +413,10 @@
     "status": "Active",
     "price": 439000,
     "address": "Hoffman Estates, IL 60169"
+  },
+  "220449730": {
+    "status": "Active",
+    "price": 360000,
+    "address": "504 Rambler Ln, Streamwood, IL 60107"
   }
 }
