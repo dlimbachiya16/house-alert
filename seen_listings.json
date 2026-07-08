@@ -418,5 +418,10 @@
     "status": "Active",
     "price": 360000,
     "address": "504 Rambler Ln, Streamwood, IL 60107"
+  },
+  "220552560": {
+    "status": "Active",
+    "price": 350000,
+    "address": "8079 Catawba Ln, Hanover Park, IL 60133"
   }
 }
