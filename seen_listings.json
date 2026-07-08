@@ -423,5 +423,10 @@
     "status": "Active",
     "price": 350000,
     "address": "8079 Catawba Ln, Hanover Park, IL 60133"
+  },
+  "220573010": {
+    "status": "Active",
+    "price": 399000,
+    "address": "215 E Bryn Mawr Ave, Roselle, IL 60172"
   }
 }
