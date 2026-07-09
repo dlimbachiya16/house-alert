@@ -428,5 +428,10 @@
     "status": "Active",
     "price": 399000,
     "address": "215 E Bryn Mawr Ave, Roselle, IL 60172"
+  },
+  "220594411": {
+    "status": "Active",
+    "price": 429900,
+    "address": "834 Edenwood Dr, Roselle, IL 60172"
   }
 }
