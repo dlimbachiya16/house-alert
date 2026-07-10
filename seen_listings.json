@@ -241,7 +241,7 @@
   },
   "216085460": {
     "status": "Active",
-    "price": 419900,
+    "price": 399000,
     "address": "1485 Westbury Dr, Hoffman Estates, IL 60192"
   },
   "216278318": {
@@ -438,5 +438,10 @@
     "status": "Active",
     "price": 429900,
     "address": "5701 Bedford Ct, Hanover Park, IL 60133"
+  },
+  "220683194": {
+    "status": "Active",
+    "price": 400000,
+    "address": "264 Tanglewood Dr, Elk Grove Village, IL 60007"
   }
 }
