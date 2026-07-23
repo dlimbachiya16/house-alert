@@ -518,5 +518,10 @@
     "status": "Active",
     "price": 430000,
     "address": "1293 Caribou Trl, Carol Stream, IL 60188"
+  },
+  "220501583": {
+    "status": "Coming Soon",
+    "price": 429900,
+    "address": "645 Flagstaff Ln, Hoffman Estates, IL 60169"
   }
 }
