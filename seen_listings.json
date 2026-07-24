@@ -528,5 +528,15 @@
     "status": "Active",
     "price": 424900,
     "address": "645 Flagstaff Ln, Hoffman Estates, IL 60169"
+  },
+  "217249134": {
+    "status": "Active",
+    "price": 449995,
+    "address": "212 N Walnut Ln N, Schaumburg, IL 60194"
+  },
+  "221088593": {
+    "status": "Active",
+    "price": 449970,
+    "address": "Hanover Park, IL 60133"
   }
 }
