@@ -568,5 +568,10 @@
     "status": "Active",
     "price": 450000,
     "address": "371 S Western Ave, Bartlett, IL 60103"
+  },
+  "217124731": {
+    "status": "Active",
+    "price": 425000,
+    "address": "1216 Berkenshire Ln, Elk Grove Village, IL 60007"
   }
 }
