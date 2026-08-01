@@ -573,5 +573,10 @@
     "status": "Active",
     "price": 425000,
     "address": "1216 Berkenshire Ln, Elk Grove Village, IL 60007"
+  },
+  "221552826": {
+    "status": "Active",
+    "price": 400000,
+    "address": "300 Oakbrook Ct, Bartlett, IL 60103"
   }
 }
