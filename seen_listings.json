@@ -603,5 +603,10 @@
     "status": "Active",
     "price": 375000,
     "address": "729 Surrey Dr, Streamwood, IL 60107"
+  },
+  "222001610": {
+    "status": "Active",
+    "price": 414900,
+    "address": "5630 Cambridge Way, Hanover Park, IL 60133"
   }
 }
