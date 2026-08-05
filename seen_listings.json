@@ -593,5 +593,15 @@
     "status": "Active",
     "price": 400000,
     "address": "1509 W Schaumburg Rd, Streamwood, IL 60107"
+  },
+  "221988548": {
+    "status": "Active",
+    "price": 350000,
+    "address": "2039 Cherry Ave, Hanover Park, IL 60133"
+  },
+  "221988954": {
+    "status": "Active",
+    "price": 375000,
+    "address": "729 Surrey Dr, Streamwood, IL 60107"
   }
 }
