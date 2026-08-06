@@ -613,5 +613,10 @@
     "status": "Active",
     "price": 449000,
     "address": "Hanover Park, IL 60133"
+  },
+  "222053018": {
+    "status": "Coming Soon",
+    "price": 365000,
+    "address": "316 Kosan Cir, Streamwood, IL 60107"
   }
 }
