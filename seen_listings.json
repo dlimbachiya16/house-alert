@@ -618,5 +618,20 @@
     "status": "Coming Soon",
     "price": 365000,
     "address": "316 Kosan Cir, Streamwood, IL 60107"
+  },
+  "222068046": {
+    "status": "Active",
+    "price": 425000,
+    "address": "915 Wampum Ct, Carol Stream, IL 60188"
+  },
+  "221567847": {
+    "status": "Active",
+    "price": 449900,
+    "address": "6975 Center Ave, Hanover Park, IL 60133"
+  },
+  "222055068": {
+    "status": "Active",
+    "price": 399999,
+    "address": "206 Ridge Cir, Streamwood, IL 60107"
   }
 }
