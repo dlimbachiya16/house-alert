@@ -633,5 +633,10 @@
     "status": "Active",
     "price": 399999,
     "address": "206 Ridge Cir, Streamwood, IL 60107"
+  },
+  "222235218": {
+    "status": "Coming Soon",
+    "price": 0,
+    "address": "124 Pipers Dr, Bartlett, IL 60103"
   }
 }
