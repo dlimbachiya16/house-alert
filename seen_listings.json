@@ -648,5 +648,10 @@
     "status": "Coming Soon",
     "price": 450000,
     "address": "635 Teton Cir, Carol Stream, IL 60188"
+  },
+  "222329999": {
+    "status": "Active",
+    "price": 419900,
+    "address": "49 Mckinley Ln, Streamwood, IL 60107"
   }
 }
