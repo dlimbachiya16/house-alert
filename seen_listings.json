@@ -643,5 +643,10 @@
     "status": "Active",
     "price": 425000,
     "address": "1480 Mayfield Ln, Hoffman Estates, IL 60169"
+  },
+  "222326230": {
+    "status": "Coming Soon",
+    "price": 450000,
+    "address": "635 Teton Cir, Carol Stream, IL 60188"
   }
 }
