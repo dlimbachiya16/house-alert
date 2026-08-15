@@ -673,5 +673,10 @@
     "status": "Active",
     "price": 399000,
     "address": "915 Wampum Ct, Carol Stream, IL 60188"
+  },
+  "222452700": {
+    "status": "Active",
+    "price": 424900,
+    "address": "793 Santa Fe Ct, Carol Stream, IL 60188"
   }
 }
