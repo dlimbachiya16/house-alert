@@ -461,7 +461,7 @@
   },
   "215566115": {
     "status": "Active",
-    "price": 395900,
+    "price": 394900,
     "address": "1812 Downey Ct, Hanover Park, IL 60133"
   },
   "220844116": {
@@ -663,5 +663,15 @@
     "status": "Active",
     "price": 450000,
     "address": "1293 Brave Ct, Carol Stream, IL 60188"
+  },
+  "222439333": {
+    "status": "Active",
+    "price": 419900,
+    "address": "101 N Eastern Ave, Bartlett, IL 60103"
+  },
+  "222440128": {
+    "status": "Active",
+    "price": 399000,
+    "address": "915 Wampum Ct, Carol Stream, IL 60188"
   }
 }
