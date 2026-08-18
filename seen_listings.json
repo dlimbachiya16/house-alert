@@ -678,5 +678,10 @@
     "status": "Active",
     "price": 424900,
     "address": "793 Santa Fe Ct, Carol Stream, IL 60188"
+  },
+  "222532900": {
+    "status": "Active",
+    "price": 449000,
+    "address": "1916 Capital Ct, Schaumburg, IL 60193"
   }
 }
