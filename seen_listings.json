@@ -693,5 +693,10 @@
     "status": "Active",
     "price": 280000,
     "address": "109 Big Oaks Rd, Streamwood, IL 60107"
+  },
+  "222432939": {
+    "status": "Active",
+    "price": 415000,
+    "address": "165 Abbeywood Cir, Streamwood, IL 60107"
   }
 }
