@@ -708,5 +708,10 @@
     "status": "Active",
     "price": 375000,
     "address": "1194 Windsor Ln, Hanover Park, IL 60133"
+  },
+  "222739219": {
+    "status": "Coming Soon",
+    "price": 370000,
+    "address": "508 Spring St, Roselle, IL 60172"
   }
 }
