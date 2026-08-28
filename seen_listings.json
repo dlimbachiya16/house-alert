@@ -486,7 +486,7 @@
   },
   "220968491": {
     "status": "Active",
-    "price": 439900,
+    "price": 425000,
     "address": "1861 Seneca Dr, Hanover Park, IL 60133"
   },
   "216838677": {
@@ -536,7 +536,7 @@
   },
   "221088593": {
     "status": "Active",
-    "price": 449970,
+    "price": 399970,
     "address": "Hanover Park, IL 60133"
   },
   "221319724": {
@@ -738,5 +738,15 @@
     "status": "Active",
     "price": 450000,
     "address": "969 E Castlewood Ln, Bartlett, IL 60103"
+  },
+  "222979309": {
+    "status": "Active",
+    "price": 400000,
+    "address": "1725 Evergreen Ave, Hanover Park, IL 60133"
+  },
+  "222659152": {
+    "status": "Active",
+    "price": 350000,
+    "address": "600 Westgate Ter, Streamwood, IL 60107"
   }
 }
