@@ -411,7 +411,7 @@
   },
   "218308187": {
     "status": "Active",
-    "price": 439000,
+    "price": 420000,
     "address": "Hoffman Estates, IL 60169"
   },
   "220449730": {
@@ -728,5 +728,15 @@
     "status": "Active",
     "price": 425000,
     "address": "107 S Elroy Ave, Bartlett, IL 60103"
+  },
+  "222939362": {
+    "status": "Active",
+    "price": 409900,
+    "address": "1795 Kent Rd, Hoffman Estates, IL 60169"
+  },
+  "222922727": {
+    "status": "Active",
+    "price": 450000,
+    "address": "969 E Castlewood Ln, Bartlett, IL 60103"
   }
 }
