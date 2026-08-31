@@ -758,5 +758,10 @@
     "status": "Active",
     "price": 409900,
     "address": "645 Flagstaff Ln, Hoffman Estates, IL 60169"
+  },
+  "222930230": {
+    "status": "Active",
+    "price": 374900,
+    "address": "709 Parkside Cir, Streamwood, IL 60107"
   }
 }
