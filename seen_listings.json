@@ -681,7 +681,7 @@
   },
   "222532900": {
     "status": "Active",
-    "price": 449000,
+    "price": 439000,
     "address": "1916 Capital Ct, Schaumburg, IL 60193"
   },
   "222550675": {
@@ -753,5 +753,10 @@
     "status": "Active",
     "price": 449000,
     "address": "7128 Glenwood Ln, Hanover Park, IL 60133"
+  },
+  "223011575": {
+    "status": "Active",
+    "price": 409900,
+    "address": "645 Flagstaff Ln, Hoffman Estates, IL 60169"
   }
 }
