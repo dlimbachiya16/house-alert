@@ -768,5 +768,10 @@
     "status": "Active",
     "price": 349900,
     "address": "113 Fairview Ln, Streamwood, IL 60107"
+  },
+  "222955950": {
+    "status": "Active",
+    "price": 399000,
+    "address": "570 Jamison Ln, Hoffman Estates, IL 60169"
   }
 }
