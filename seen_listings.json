@@ -586,7 +586,7 @@
   },
   "221299359": {
     "status": "Active",
-    "price": 439900,
+    "price": 429900,
     "address": "530 Maywood Ln, Hoffman Estates, IL 60169"
   },
   "221979326": {
@@ -763,5 +763,10 @@
     "status": "Active",
     "price": 374900,
     "address": "709 Parkside Cir, Streamwood, IL 60107"
+  },
+  "223031783": {
+    "status": "Active",
+    "price": 349900,
+    "address": "113 Fairview Ln, Streamwood, IL 60107"
   }
 }
