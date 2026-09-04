@@ -778,5 +778,10 @@
     "status": "Active",
     "price": 399999,
     "address": "5701 Bedford Ct, Hanover Park, IL 60133"
+  },
+  "221846828": {
+    "status": "Active",
+    "price": 375000,
+    "address": "813 Krause Ave, Streamwood, IL 60107"
   }
 }
