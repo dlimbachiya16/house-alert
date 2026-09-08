@@ -798,5 +798,10 @@
     "status": "Coming Soon",
     "price": 425000,
     "address": "16 Joyce Ln, Streamwood, IL 60107"
+  },
+  "223269572": {
+    "status": "Active",
+    "price": 439900,
+    "address": "2050 Shepard Rd, Hoffman Estates, IL 60169"
   }
 }
