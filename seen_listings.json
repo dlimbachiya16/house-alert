@@ -813,5 +813,10 @@
     "status": "Active",
     "price": 375000,
     "address": "435 Kingman Ln, Hoffman Estates, IL 60169"
+  },
+  "223310993": {
+    "status": "Active",
+    "price": 447000,
+    "address": "8030 Carlisle Dr, Hanover Park, IL 60133"
   }
 }
