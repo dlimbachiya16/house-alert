@@ -803,5 +803,10 @@
     "status": "Active",
     "price": 439900,
     "address": "2050 Shepard Rd, Hoffman Estates, IL 60169"
+  },
+  "223280912": {
+    "status": "Active",
+    "price": 448000,
+    "address": "500 Rose Ln, Bartlett, IL 60103"
   }
 }
