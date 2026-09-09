@@ -808,5 +808,10 @@
     "status": "Active",
     "price": 448000,
     "address": "500 Rose Ln, Bartlett, IL 60103"
+  },
+  "223300005": {
+    "status": "Active",
+    "price": 375000,
+    "address": "435 Kingman Ln, Hoffman Estates, IL 60169"
   }
 }
