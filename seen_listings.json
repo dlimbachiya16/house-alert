@@ -818,5 +818,15 @@
     "status": "Active",
     "price": 447000,
     "address": "8030 Carlisle Dr, Hanover Park, IL 60133"
+  },
+  "222980067": {
+    "status": "Active",
+    "price": 425000,
+    "address": "956 Bryn Mawr Ave, Bartlett, IL 60103"
+  },
+  "223237288": {
+    "status": "Active",
+    "price": 425000,
+    "address": "16 Joyce Ln, Streamwood, IL 60107"
   }
 }
