@@ -828,5 +828,15 @@
     "status": "Active",
     "price": 425000,
     "address": "16 Joyce Ln, Streamwood, IL 60107"
+  },
+  "223374342": {
+    "status": "Active",
+    "price": 389900,
+    "address": "321 Desmond Dr, Schaumburg, IL 60193"
+  },
+  "223373610": {
+    "status": "Active",
+    "price": 440000,
+    "address": "564 Gateshead S, Elk Grove Village, IL 60007"
   }
 }
