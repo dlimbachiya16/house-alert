@@ -786,7 +786,7 @@
   },
   "222791517": {
     "status": "Active",
-    "price": 450000,
+    "price": 440000,
     "address": "574 Bristol Ln, Elk Grove Village, IL 60007"
   },
   "223209171": {
@@ -878,5 +878,10 @@
     "status": "Active",
     "price": 450000,
     "address": "1109 Lancaster Ave, Elk Grove Village, IL 60007"
+  },
+  "223608287": {
+    "status": "Active",
+    "price": 375000,
+    "address": "1485 Westbury Dr, Hoffman Estates, IL 60192"
   }
 }
