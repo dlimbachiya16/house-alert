@@ -868,5 +868,15 @@
     "status": "Active",
     "price": 379999,
     "address": "1551 Birch Ave, Hanover Park, IL 60133"
+  },
+  "223402388": {
+    "status": "Active",
+    "price": 350000,
+    "address": "8196 Dartmouth Ln, Hanover Park, IL 60133"
+  },
+  "222972800": {
+    "status": "Active",
+    "price": 450000,
+    "address": "1109 Lancaster Ave, Elk Grove Village, IL 60007"
   }
 }
