@@ -898,5 +898,10 @@
     "status": "Active",
     "price": 329000,
     "address": "2039 Cherry Ave, Hanover Park, IL 60133"
+  },
+  "223768696": {
+    "status": "Coming Soon",
+    "price": 0,
+    "address": "608 Wainsford Dr, Hoffman Estates, IL 60169"
   }
 }
