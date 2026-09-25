@@ -913,5 +913,10 @@
     "status": "Active",
     "price": 449900,
     "address": "425 Canyon Trl, Carol Stream, IL 60188"
+  },
+  "223847792": {
+    "status": "Active",
+    "price": 369900,
+    "address": "7180 Edgebrook Ln, Hanover Park, IL 60133"
   }
 }
