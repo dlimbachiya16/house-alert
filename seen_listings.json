@@ -923,5 +923,15 @@
     "status": "Active",
     "price": 419000,
     "address": "2341 Leeward Ln, Hanover Park, IL 60133"
+  },
+  "223791625": {
+    "status": "Active",
+    "price": 449900,
+    "address": "290 W Oak Glen Dr, Bartlett, IL 60103"
+  },
+  "223872308": {
+    "status": "Active",
+    "price": 445000,
+    "address": "267 Holly Ln, Elk Grove Village, IL 60007"
   }
 }
