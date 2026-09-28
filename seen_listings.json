@@ -741,7 +741,7 @@
   },
   "222979309": {
     "status": "Active",
-    "price": 375000,
+    "price": 349000,
     "address": "1725 Evergreen Ave, Hanover Park, IL 60133"
   },
   "222659152": {
@@ -938,5 +938,10 @@
     "status": "Active",
     "price": 385000,
     "address": "7101 Mulberry St, Hanover Park, IL 60133"
+  },
+  "223921060": {
+    "status": "Active",
+    "price": 419900,
+    "address": "1650 Beverly Ct, Hanover Park, IL 60133"
   }
 }
