@@ -943,5 +943,10 @@
     "status": "Active",
     "price": 419900,
     "address": "1650 Beverly Ct, Hanover Park, IL 60133"
+  },
+  "223937968": {
+    "status": "Active",
+    "price": 340000,
+    "address": "109 Big Oaks Rd, Streamwood, IL 60107"
   }
 }
