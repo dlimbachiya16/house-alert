@@ -948,5 +948,10 @@
     "status": "Active",
     "price": 340000,
     "address": "109 Big Oaks Rd, Streamwood, IL 60107"
+  },
+  "223950346": {
+    "status": "Active",
+    "price": 440000,
+    "address": "5224 Arlington Cir, Hanover Park, IL 60133"
   }
 }
