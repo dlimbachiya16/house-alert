@@ -958,5 +958,10 @@
     "status": "Coming Soon",
     "price": 0,
     "address": "1968 Ridgemore Dr, Bartlett, IL 60103"
+  },
+  "224095652": {
+    "status": "Active",
+    "price": 399900,
+    "address": "14 Woodridge Ln, Streamwood, IL 60107"
   }
 }
