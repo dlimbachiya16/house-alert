@@ -963,5 +963,10 @@
     "status": "Active",
     "price": 399900,
     "address": "14 Woodridge Ln, Streamwood, IL 60107"
+  },
+  "223100693": {
+    "status": "Active",
+    "price": 429900,
+    "address": "677 Windemere Ln, Carol Stream, IL 60188"
   }
 }
