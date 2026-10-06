@@ -866,7 +866,7 @@
   },
   "223562885": {
     "status": "Active",
-    "price": 379999,
+    "price": 364999,
     "address": "1551 Birch Ave, Hanover Park, IL 60133"
   },
   "223402388": {
@@ -968,5 +968,15 @@
     "status": "Active",
     "price": 429900,
     "address": "677 Windemere Ln, Carol Stream, IL 60188"
+  },
+  "223999311": {
+    "status": "Coming Soon",
+    "price": 450000,
+    "address": "1344 Blair Ln, Hoffman Estates, IL 60169"
+  },
+  "224154511": {
+    "status": "Active",
+    "price": 445000,
+    "address": "3 Whitehall Ct, Streamwood, IL 60107"
   }
 }
