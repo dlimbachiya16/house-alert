@@ -978,5 +978,10 @@
     "status": "Active",
     "price": 445000,
     "address": "3 Whitehall Ct, Streamwood, IL 60107"
+  },
+  "224181235": {
+    "status": "Active",
+    "price": 290000,
+    "address": "109 Big Oaks Rd, Streamwood, IL 60107"
   }
 }
