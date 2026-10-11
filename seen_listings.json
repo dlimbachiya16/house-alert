@@ -988,5 +988,10 @@
     "status": "Active",
     "price": 449997,
     "address": "572 N Walnut Ln, Schaumburg, IL 60194"
+  },
+  "224160799": {
+    "status": "Active",
+    "price": 450000,
+    "address": "1344 Blair Ln, Hoffman Estates, IL 60169"
   }
 }
