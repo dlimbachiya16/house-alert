@@ -766,7 +766,7 @@
   },
   "223031783": {
     "status": "Active",
-    "price": 335000,
+    "price": 310000,
     "address": "113 Fairview Ln, Streamwood, IL 60107"
   },
   "222955950": {
@@ -998,5 +998,10 @@
     "status": "Active",
     "price": 425000,
     "address": "400 E Thacker St, Hoffman Estates, IL 60169"
+  },
+  "224444668": {
+    "status": "Active",
+    "price": 450000,
+    "address": "641 Clearmont Dr, Elk Grove Village, IL 60007"
   }
 }
