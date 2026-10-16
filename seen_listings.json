@@ -1003,5 +1003,15 @@
     "status": "Active",
     "price": 450000,
     "address": "641 Clearmont Dr, Elk Grove Village, IL 60007"
+  },
+  "224452128": {
+    "status": "Coming Soon",
+    "price": 370000,
+    "address": "508 Spring St, Roselle, IL 60172"
+  },
+  "224454565": {
+    "status": "Active",
+    "price": 430000,
+    "address": "318 E Maple Ave, Roselle, IL 60172"
   }
 }
