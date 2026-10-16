@@ -993,5 +993,10 @@
     "status": "Active",
     "price": 450000,
     "address": "1344 Blair Ln, Hoffman Estates, IL 60169"
+  },
+  "224434763": {
+    "status": "Active",
+    "price": 425000,
+    "address": "400 E Thacker St, Hoffman Estates, IL 60169"
   }
 }
