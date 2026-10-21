@@ -1018,5 +1018,10 @@
     "status": "Active",
     "price": 424999,
     "address": "318 E Maple Ave, Roselle, IL 60172"
+  },
+  "224452192": {
+    "status": "Active",
+    "price": 370000,
+    "address": "508 Spring St, Roselle, IL 60172"
   }
 }
