@@ -941,7 +941,7 @@
   },
   "223921060": {
     "status": "Active",
-    "price": 419900,
+    "price": 412900,
     "address": "1650 Beverly Ct, Hanover Park, IL 60133"
   },
   "223937968": {
@@ -1012,6 +1012,11 @@
   "224454565": {
     "status": "Active",
     "price": 430000,
+    "address": "318 E Maple Ave, Roselle, IL 60172"
+  },
+  "224574199": {
+    "status": "Active",
+    "price": 424999,
     "address": "318 E Maple Ave, Roselle, IL 60172"
   }
 }
