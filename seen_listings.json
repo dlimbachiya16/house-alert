@@ -991,7 +991,7 @@
   },
   "224160799": {
     "status": "Active",
-    "price": 450000,
+    "price": 429900,
     "address": "1344 Blair Ln, Hoffman Estates, IL 60169"
   },
   "224434763": {
@@ -1023,5 +1023,10 @@
     "status": "Active",
     "price": 370000,
     "address": "508 Spring St, Roselle, IL 60172"
+  },
+  "224637270": {
+    "status": "Active",
+    "price": 340000,
+    "address": "5460 Arlington Dr, Hanover Park, IL 60133"
   }
 }
