@@ -1028,5 +1028,10 @@
     "status": "Active",
     "price": 340000,
     "address": "5460 Arlington Dr, Hanover Park, IL 60133"
+  },
+  "224689670": {
+    "status": "Active",
+    "price": 429900,
+    "address": "530 Maywood Ln, Hoffman Estates, IL 60169"
   }
 }
