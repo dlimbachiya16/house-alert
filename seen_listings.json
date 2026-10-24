@@ -1033,5 +1033,10 @@
     "status": "Active",
     "price": 429900,
     "address": "530 Maywood Ln, Hoffman Estates, IL 60169"
+  },
+  "224723713": {
+    "status": "Active",
+    "price": 440000,
+    "address": "480 Knoll Crest Dr, Bartlett, IL 60103"
   }
 }
