@@ -1038,5 +1038,10 @@
     "status": "Active",
     "price": 440000,
     "address": "480 Knoll Crest Dr, Bartlett, IL 60103"
+  },
+  "224797461": {
+    "status": "Active",
+    "price": 445000,
+    "address": "1007 Confederation Dr, Bartlett, IL 60103"
   }
 }
