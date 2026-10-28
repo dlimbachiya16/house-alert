@@ -1043,5 +1043,15 @@
     "status": "Active",
     "price": 445000,
     "address": "1007 Confederation Dr, Bartlett, IL 60103"
+  },
+  "224854384": {
+    "status": "Active",
+    "price": 450000,
+    "address": "70 Avon Rd, Elk Grove Village, IL 60007"
+  },
+  "224852808": {
+    "status": "Active",
+    "price": 369900,
+    "address": "246 Greenbriar St, Elk Grove Village, IL 60007"
   }
 }
