@@ -1053,5 +1053,15 @@
     "status": "Active",
     "price": 369900,
     "address": "246 Greenbriar St, Elk Grove Village, IL 60007"
+  },
+  "225104026": {
+    "status": "Auction",
+    "price": 240000,
+    "address": "770 Voyager Dr, Bartlett, IL 60103"
+  },
+  "216535249": {
+    "status": "Active",
+    "price": 450000,
+    "address": "6910 Juniper St, Hanover Park, IL 60133"
   }
 }
