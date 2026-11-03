@@ -1068,5 +1068,10 @@
     "status": "Active",
     "price": 399000,
     "address": "915 Olive St, Hoffman Estates, IL 60169"
+  },
+  "226309803": {
+    "status": "Active",
+    "price": 442500,
+    "address": "1615 Burning Bush Ln, Hoffman Estates, IL 60192"
   }
 }
