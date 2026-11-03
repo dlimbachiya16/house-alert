@@ -1016,7 +1016,7 @@
   },
   "224574199": {
     "status": "Active",
-    "price": 424999,
+    "price": 414900,
     "address": "318 E Maple Ave, Roselle, IL 60172"
   },
   "224452192": {
@@ -1063,5 +1063,10 @@
     "status": "Active",
     "price": 450000,
     "address": "6910 Juniper St, Hanover Park, IL 60133"
+  },
+  "223220525": {
+    "status": "Active",
+    "price": 399000,
+    "address": "915 Olive St, Hoffman Estates, IL 60169"
   }
 }
