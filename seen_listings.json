@@ -1073,5 +1073,10 @@
     "status": "Active",
     "price": 442500,
     "address": "1615 Burning Bush Ln, Hoffman Estates, IL 60192"
+  },
+  "226334695": {
+    "status": "Active",
+    "price": 355000,
+    "address": "508 Spring St, Roselle, IL 60172"
   }
 }
