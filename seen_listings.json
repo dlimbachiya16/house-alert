@@ -1078,5 +1078,10 @@
     "status": "Active",
     "price": 355000,
     "address": "508 Spring St, Roselle, IL 60172"
+  },
+  "226435765": {
+    "status": "Active",
+    "price": 439000,
+    "address": "64 Brookstone Dr, Streamwood, IL 60107"
   }
 }
