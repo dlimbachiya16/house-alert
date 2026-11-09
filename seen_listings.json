@@ -911,7 +911,7 @@
   },
   "223037082": {
     "status": "Active",
-    "price": 444900,
+    "price": 444500,
     "address": "425 Canyon Trl, Carol Stream, IL 60188"
   },
   "223847792": {
@@ -1083,5 +1083,10 @@
     "status": "Active",
     "price": 439000,
     "address": "64 Brookstone Dr, Streamwood, IL 60107"
+  },
+  "223871452": {
+    "status": "Active",
+    "price": 380000,
+    "address": "310 Chase Ct, Streamwood, IL 60107"
   }
 }
