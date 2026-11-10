@@ -1088,5 +1088,10 @@
     "status": "Active",
     "price": 380000,
     "address": "310 Chase Ct, Streamwood, IL 60107"
+  },
+  "226523075": {
+    "status": "Active",
+    "price": 365000,
+    "address": "7055 Chestnut St, Hanover Park, IL 60133"
   }
 }
