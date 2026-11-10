@@ -1093,5 +1093,10 @@
     "status": "Active",
     "price": 365000,
     "address": "7055 Chestnut St, Hanover Park, IL 60133"
+  },
+  "226530159": {
+    "status": "Active",
+    "price": 428800,
+    "address": "2116 Briar Hill Dr, Schaumburg, IL 60194"
   }
 }
