@@ -1118,5 +1118,15 @@
     "status": "Active",
     "price": 388000,
     "address": "318 E Maple Ave, Roselle, IL 60172"
+  },
+  "226728100": {
+    "status": "Active",
+    "price": 400000,
+    "address": "4537 Crab Orchard Dr, Hoffman Estates, IL 60192"
+  },
+  "226718082": {
+    "status": "Active",
+    "price": 405900,
+    "address": "231 Clearmont Dr, Elk Grove Village, IL 60007"
   }
 }
