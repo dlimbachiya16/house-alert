@@ -1128,5 +1128,10 @@
     "status": "Active",
     "price": 405900,
     "address": "231 Clearmont Dr, Elk Grove Village, IL 60007"
+  },
+  "227009891": {
+    "status": "Active",
+    "price": 409900,
+    "address": "106 Tanglewood Dr, Elk Grove Village, IL 60007"
   }
 }
