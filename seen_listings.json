@@ -1143,5 +1143,10 @@
     "status": "Active",
     "price": 325000,
     "address": "109 Big Oaks Rd, Streamwood, IL 60107"
+  },
+  "228297251": {
+    "status": "Active",
+    "price": 434900,
+    "address": "19 Hastings Ave, Elk Grove Village, IL 60007"
   }
 }
